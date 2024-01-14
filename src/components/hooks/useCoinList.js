@@ -1,25 +1,35 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { COIN_LIST_API } from "../../utils/constants";
 
 const useCoinList = (currency) => {
   const [coinList, setCoinList] = useState(null);
+  const [error, setError] = useState(null);
+
   const getCoinList = async () => {
     try {
       const response = await fetch(COIN_LIST_API(currency));
+
       if (!response.ok) {
-        throw new Error(`HTTP Error! Status: ${response.status} `);
+        setError(response.status);
+        console.error(
+          `Error fetching coinlist data. Status: ${response.status}`
+        );
+        return;
       }
+
       const json = await response.json();
       setCoinList(json);
     } catch (error) {
-      console.error("error fetchind data: ", error);
+      setError("Network error");
+      console.error("Error fetching coinlist data: ", error);
     }
   };
+
   useEffect(() => {
     getCoinList();
   }, [currency]);
-  const memoizedCoinList = useMemo(() => coinList, [coinList]);
-  return memoizedCoinList;
+
+  return { coinList, error };
 };
 
 export default useCoinList;

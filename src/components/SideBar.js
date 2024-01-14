@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
-
+import millify from "millify";
 const SideBar = () => {
   const coinList = useSelector((store) => store.app.coinList);
   const currency = useSelector((store) => store.app.currency);
-  if (!coinList) return <p>Loading...</p>;
+  if (!coinList || !Array.isArray(coinList)) return <p>Loading...</p>;
   return (
-    <div className="max-h-screen overflow-y-scroll">
+    <div className="max-h-[871px] overflow-hidden overflow-y-scroll">
       <h2 className="lg:font-semibold lg:text-gray-700 text-lg">
         Cryptocurrency By Market Cap
       </h2>
