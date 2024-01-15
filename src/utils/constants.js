@@ -9,6 +9,11 @@ export const PORTFOLIO_API = (currency) =>
 
 export const EXCHANGE_RATES_API = `https://api.coingecko.com/api/v3/exchange_rates`;
 
+export const COIN_SEARCH_API = (
+  string
+) => `https://api.coingecko.com/api/v3/search?query=${string}
+`;
+
 export const DURATION_BUTTONS = [
   {
     title: "1D",

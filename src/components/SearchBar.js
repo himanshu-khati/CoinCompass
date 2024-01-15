@@ -1,16 +1,43 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setCurrency } from "../utils/appSlice";
+import { COIN_SEARCH_API } from "../utils/constants";
+import {
+  addSearchString,
+  setDisplaySearch,
+  addSearchData,
+} from "../utils/searchSlice";
 const SearchBar = () => {
   const dispatch = useDispatch();
   const handleCurrencySelect = (event) => {
     dispatch(setCurrency(event.target.value));
   };
+  const [error, setError] = useState(null);
 
   const [searchString, setSerachString] = useState("");
   console.log(searchString);
+  const getSearchResults = async () => {
+    try {
+      const response = await fetch(COIN_SEARCH_API(searchString));
+      if (!response.ok) {
+        setError(response.status);
+        console.log(`Error Fetchinig Search Results: ${response.status}`);
+        return;
+      }
+      const json = await response.json();
+      setError(null);
+      dispatch(addSearchData(json.coins));
+    } catch (error) {
+      setError("Network Error");
+      console.log(error);
+    }
+  };
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    dispatch(addSearchString(searchString));
+    dispatch(setDisplaySearch(true));
+    getSearchResults();
   };
 
   return (
