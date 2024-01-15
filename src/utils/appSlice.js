@@ -5,7 +5,6 @@ const appSlice = createSlice({
   initialState: {
     currency: "inr",
     coinList: null,
-    error: null,
   },
   reducers: {
     setCurrency: (state, action) => {
@@ -15,11 +14,8 @@ const appSlice = createSlice({
     setCoinList: (state, action) => {
       state.coinList = action.payload;
     },
-    addError: (state, action) => {
-      state.error = action.payload;
-    },
   },
 });
 
 export default appSlice.reducer;
-export const { setCurrency, setCoinList, addError } = appSlice.actions;
+export const { setCurrency, setCoinList } = appSlice.actions;

@@ -11,17 +11,18 @@ const useCoinList = (currency) => {
 
       if (!response.ok) {
         setError(response.status);
-        console.error(
+        console.log(
           `Error fetching coinlist data. Status: ${response.status}`
         );
         return;
       }
 
       const json = await response.json();
+      setError(null);
       setCoinList(json);
     } catch (error) {
       setError("Network error");
-      console.error("Error fetching coinlist data: ", error);
+      console.log("Error fetching coinlist data: ", error);
     }
   };
 
@@ -29,7 +30,7 @@ const useCoinList = (currency) => {
     getCoinList();
   }, [currency]);
 
-  return { coinList, error };
+  return {coinList, error};
 };
 
 export default useCoinList;
