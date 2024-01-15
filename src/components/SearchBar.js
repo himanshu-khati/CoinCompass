@@ -1,43 +1,23 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setCurrency } from "../utils/appSlice";
-import { COIN_SEARCH_API } from "../utils/constants";
-import {
-  addSearchString,
-  setDisplaySearch,
-  addSearchData,
-} from "../utils/searchSlice";
+import useSearchData from "./hooks/useSearchData";
+import { addSearchString, addSearchData } from "../utils/searchSlice";
 const SearchBar = () => {
   const dispatch = useDispatch();
+  const { getSearchResults, error } = useSearchData();
+
   const handleCurrencySelect = (event) => {
     dispatch(setCurrency(event.target.value));
   };
-  const [error, setError] = useState(null);
 
   const [searchString, setSerachString] = useState("");
-  console.log(searchString);
-  const getSearchResults = async () => {
-    try {
-      const response = await fetch(COIN_SEARCH_API(searchString));
-      if (!response.ok) {
-        setError(response.status);
-        console.log(`Error Fetchinig Search Results: ${response.status}`);
-        return;
-      }
-      const json = await response.json();
-      setError(null);
-      dispatch(addSearchData(json.coins));
-    } catch (error) {
-      setError("Network Error");
-      console.log(error);
-    }
-  };
-
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     dispatch(addSearchString(searchString));
-    dispatch(setDisplaySearch(true));
-    getSearchResults();
+    const data = await getSearchResults(searchString);
+    dispatch(addSearchData(data));
+    setSerachString("");
   };
 
   return (
@@ -62,11 +42,12 @@ const SearchBar = () => {
             placeholder="Search by coin"
             className="border p-2 rounded-s-lg px-4  outline-blue-500 w-[660px] "
             onChange={(e) => setSerachString(e.target.value)}
+            value={searchString}
           />
           <input
             type="submit"
             value="Search"
-            className="border px-4 rounded-e-lg"
+            className=" bg-blue-700 text-white px-4 rounded-e-lg cursor-pointer hover:bg-blue-500"
           />
         </form>
       </div>
