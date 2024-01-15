@@ -15,7 +15,7 @@ const HomeLayout = () => {
           <CoinsExchange />
         </div>
       </div>
-      <div className="w-3/12 bg-white p-5 border border-green-600">
+      <div className="w-3/12 bg-white p-3 shadow rounded-lg">
         <SideBar />
       </div>
     </div>
