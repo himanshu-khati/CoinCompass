@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+CoinCompass Cryptocurrency Dashboard
+CoinCompass is a comprehensive web application for tracking cryptocurrency prices, managing portfolios, and gaining insights into the dynamic world of cryptocurrencies. Explore real-time data, historical charts, and market trends effortlessly. Hosted at https://coincompass.web.app/.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Features
+Real-time Cryptocurrency Data
+Utilizes the CoinGecko API to provide up-to-date information on various cryptocurrencies.
+Responsive Design
+Ensures a seamless user experience across devices with a responsive and mobile-friendly design.
+State Management with Redux Toolkit
+Manages the application state efficiently using Redux Toolkit for a robust and scalable architecture.
+Historical Chart Visualization
+Displays historical price trends with flexible chart options:
+1 day
+1 week
+1 month
+1 year
+Currency Exchange
+Supports currency exchange rates for major fiat currencies.
+Multi-currency Support
+Choose your preferred currency for displaying prices and portfolio values, including USD and INR.
+Portfolio Tracking by Market Cap
+Track your cryptocurrency portfolio based on market capitalization.
+Chart Visualizations
+Utilizes Chart.js to provide both bar graph and line graph visualizations for better data representation.
+Usage
+Visit https://coincompass.web.app/ to access CoinCompass and:
 
-## Available Scripts
+Navigate through the user-friendly interface to explore real-time cryptocurrency data.
+Customize your view with different chart durations, currency selections, and portfolio tracking options.
+Stay informed about the crypto market trends and make informed investment decisions.
+Installation
+Clone the repository:
 
-In the project directory, you can run:
+bash
+Copy code
+git clone https://github.com/your-username/coincompass.git
+cd coincompass
+Install dependencies:
 
-### `npm start`
+bash
+Copy code
+npm install
+Create a .env file in the root directory and add your CoinGecko API key:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+env
+Copy code
+REACT_APP_COINGECKO_API_KEY=your-api-key
+Start the development server:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+bash
+Copy code
+npm start
+Visit http://localhost:3000 in your browser to access CoinCompass locally.
 
-### `npm test`
+Contributing
+We welcome contributions from the community! If you have suggestions, bug reports, or want to contribute to the development of CoinCompass, please check our contribution guidelines.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+License
+This project is licensed under the MIT License.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Happy crypto tracking with CoinCompass! 🚀
