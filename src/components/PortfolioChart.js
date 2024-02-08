@@ -6,21 +6,27 @@ import { useSelector } from "react-redux";
 import PieShimmer from "./shimmerUI/PieShimmer";
 
 const PortfolioChart = () => {
+  // Custom hook to fetch portfolio data
   usePortfolioData();
+
+  // Retrieve portfolio data from the Redux store
   const coinData = useSelector((store) => store.chart.portfolioData);
 
+  // Display shimmer effect while data is loading
   if (!coinData || !Array.isArray(coinData)) {
     return <PieShimmer />;
   }
 
+  // Extract labels and dataset data from portfolio data
   const labelData = coinData.map((data) => data.name);
   const datasetData = coinData.map((data) => data.market_cap);
 
-  // Millify the datasetData
+  // Millify the datasetData for better readability
   const millifiedData = datasetData.map((value) => millify(value));
 
   return (
     <div className="h-56 w-full flex justify-center">
+      {/* Render Pie chart */}
       <Pie
         datasetIdKey="id"
         data={{
@@ -43,6 +49,7 @@ const PortfolioChart = () => {
           ],
         }}
         options={{
+          // Configure tooltip customization using callbacks
           plugins: {
             tooltip: {
               callbacks: {
@@ -54,6 +61,9 @@ const PortfolioChart = () => {
               },
             },
           },
+          // Enable responsiveness and set maintainAspectRatio to false
+          responsive: true,
+          maintainAspectRatio: false,
         }}
       />
     </div>

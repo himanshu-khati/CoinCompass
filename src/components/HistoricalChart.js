@@ -7,18 +7,24 @@ import { Chart } from "react-chartjs-2";
 import { useSelector } from "react-redux";
 
 const HistoricalChart = () => {
+  // Fetch historical chart data using custom hook
   const coinData = useHistoricalChart();
+
+  // Retrieve chart-related information from Redux store
   const chartType = useSelector((store) => store.chart.chartType);
   const duration = useSelector((store) => store.chart.days);
   const coinId = useSelector((store) => store.chart.coinId);
   const currency = useSelector((store) => store.app.currency);
 
+  // If data is not available, display loading message
   if (!coinData || !coinData.prices || !Array.isArray(coinData.prices)) {
     return <p>Loading</p>;
   }
-  const { prices } = coinData;
 
+  // Extract data for labels and dataset
+  const { prices } = coinData;
   const labelData = prices.map((data) => {
+    // Format timestamp based on the selected duration
     let weekPattern = date.compile("hh:mm A, DD MMM");
     let monthPattern = date.compile("D MMM YY ");
     let yearPattern = date.compile("MMM YY");
@@ -40,8 +46,10 @@ const HistoricalChart = () => {
   const datasetData = prices.map((data) => data[1]);
 
   return (
-    <div className=" px-4 py-6  bg-white rounded-xl ">
+    <div className="lg:px-4 lg:py-6 flex justify-center bg-white rounded-xl">
+      {/* Render historical chart */}
       <Chart
+        className="lg:h-[400px] h-[300px]"
         type={chartType}
         datasetIdKey="id"
         data={{
@@ -61,7 +69,11 @@ const HistoricalChart = () => {
           ],
         }}
         options={{
+          // Enable responsiveness and set maintainAspectRatio to false
+          responsive: true,
+          maintainAspectRatio: false,
           scales: {
+            // X-axis configuration
             x: {
               grid: {
                 display: false,
@@ -76,6 +88,7 @@ const HistoricalChart = () => {
               },
               maxTicksLimit: 10,
             },
+            // Y-axis configuration
             y: {
               grid: {
                 display: true,

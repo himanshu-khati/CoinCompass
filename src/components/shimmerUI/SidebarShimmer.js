@@ -9,7 +9,7 @@ const SidebarShimmer = () => {
       <h2 className="text-gray-900 py-3 text-md font-semibold">
         Cryptocurrency By Market Cap
       </h2>
-      <div className="min-h-[850px] bg-gray-300 rounded-lg animate-pulse"></div>
+      <div className="min-h-[850px]  bg-gray-300 rounded-lg animate-pulse"></div>
     </div>
   );
 };

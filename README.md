@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Cryptocurrency Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Content
 
-## Available Scripts
+1. [Introduction]
+2. [Features]
+3. [Technologies Used]
+4. [Getting Started]
+5. [NOTE]
 
-In the project directory, you can run:
+## 1. Introduction
 
-### `npm start`
+This project is a Cryptocurrency Dashboard built using React, Redux Toolkit and TailwindCss. The dashboard allows users to view real-time price data for a selection of popular cryptocurrencies, and also provides a historical price chart for each coin. The data is sourced from the CoinGecko API, and the UI is built using Tailwind CSS.
+Hosted App : https://coincompass.web.app
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![ss-crypto dashboard](./public/scrnli_2_8_2024_2-33-22%20PM.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 2. Features
 
-### `npm test`
+#### The Cryptocurrency Dashboard includes the following features.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Real-time price data for a selection of popular cryptocurrencies.
 
-### `npm run build`
+- Custom Hooks for clean coding practices.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Historical price charts for each coin.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Ability to filter coins by name.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- User can choose Chart types.
 
-### `npm run eject`
+- Ability to sort coins by price, market cap or 24 hour change.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Fully responsive design.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Crypto Exchange: allows users to convert different crypto currencies into other currencies.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Sidebar indicates profit/loss percentage on 24 hour basis.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Search Results to displayed in sidebar
 
-## Learn More
+## 3. Technology Used
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- TailwindCSS
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- React JS
 
-### Code Splitting
+- Redux Toolkit
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Chartjs
 
-### Analyzing the Bundle Size
+- CoinGeckoAPI
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 4. Getting Started
 
-### Making a Progressive Web App
+#### To get started with the project, follow these steps:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Clone the repository to your local machine.
 
-### Advanced Configuration
+   git clone https://github.com/himanshu-khati/CoinCompass
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+2. Install dependencies by running npm install.
 
-### Deployment
+3. Start the development server by running 'npm start'.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+4. Open the application in your browser by navigating to 'http://localhost:3000'.
 
-### `npm run build` fails to minify
+## 5. NOTE
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## This Capstone project is associated with Almabetter.
