@@ -14,7 +14,7 @@ const Portfolio = () => {
         <p className="text-lg font-semibold text-gray-600">
           Total Value{" "}
           <span className="text-gray-900 text-lg font-semibold">
-            1000 {currency.toUpperCase()}
+            1000 {currency?.toUpperCase()}
           </span>{" "}
         </p>
       </div>

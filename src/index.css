@@ -11,3 +11,17 @@
     scrollbar-width: none; /* Firefox */
   }
 }
+.ant-select-item-option-selected,
+.ant-select-item-option-active {
+  background-color: #fbeaea !important;
+}
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background-color: #fbeaea !important;
+}
+
+@media (max-width: 640px) {
+  .ant-select {
+    width: 100% !important;
+  }
+}

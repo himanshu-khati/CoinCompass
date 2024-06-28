@@ -13,6 +13,7 @@ const ShowSearchResults = () => {
 
   // Function to handle the selection of a coin from search results
   const handleCoinSelect = (coinId) => {
+    // console.log("coinID: ", coinId);
     dispatch(addCoins(coinId));
   };
 

@@ -4,7 +4,7 @@ const chartSlice = createSlice({
   name: "chart",
   initialState: {
     chartType: "line",
-    coinId: "bitcoin",
+    coinId: ["bitcoin"],
     days: 1,
     historicalChartData: null,
     portfolioData: null,
@@ -15,6 +15,9 @@ const chartSlice = createSlice({
     },
     addCoins: (state, action) => {
       state.coinId = action.payload;
+    },
+    removeCoin: (state, action) => {
+      state.coinId = state.coinId.filter((id) => id !== action.payload);
     },
     setDays: (state, action) => {
       state.days = action.payload;
@@ -31,6 +34,7 @@ const chartSlice = createSlice({
 export const {
   setChartType,
   addCoins,
+  removeCoin,
   setDays,
   addPortfolioData,
   addhistoricalChartData,

@@ -1,32 +1,26 @@
 import React from "react";
-import useHistoricalChart from "./hooks/useHistoricalChart";
+import { useSelector } from "react-redux";
 import date from "date-and-time";
-
 import { Chart as ChartJS } from "chart.js/auto";
 import { Chart } from "react-chartjs-2";
-import { useSelector } from "react-redux";
 
 const HistoricalChart = () => {
-  // Fetch historical chart data using custom hook
-  const { isLoading, error } = useHistoricalChart();
-
   // Retrieve chart-related information from Redux store
   const chartType = useSelector((store) => store.chart.chartType);
   const duration = useSelector((store) => store.chart.days);
+  const colors = ["#007BFF", "#28a745"];
   const coinId = useSelector((store) => store.chart.coinId);
   const currency = useSelector((store) => store.app.currency);
-  const colors = ["#007BFF", "#28a745"];
   const historicalChartData = useSelector(
     (store) => store.chart.historicalChartData
   );
 
-  // Display loading or error message
-  if (isLoading || !historicalChartData) {
-    return <p>Loading...</p>;
+  // Check if historical data is available
+  if (!historicalChartData) {
+    return <p>Loading...</p>; // Show loading text if data is not yet available
   }
-  if (error) {
-    return <p>Error: {error.message}</p>;
-  }
+
+  // Prepare data for Chart.js
   const datasets = historicalChartData.map((data, index) => ({
     id: index,
     label: coinId[index]?.toUpperCase(), // Label each dataset by coin
@@ -36,13 +30,10 @@ const HistoricalChart = () => {
     backgroundColor: colors[index % colors.length],
     pointBorderColor: "transparent",
     pointBorderWidth: 2,
-    pointRadius: 1,
-    pointHoverRadius:1,
-    fill: false,
-    tension: 0,
-    cubicInterpolationMode: 'monotone'
+    pointRadius: 0,
   }));
 
+  // Extract labels for the x-axis based on the first dataset (assuming all have the same timestamps)
   const labelData = historicalChartData[0].prices.map((price) => {
     let format;
     switch (duration) {
