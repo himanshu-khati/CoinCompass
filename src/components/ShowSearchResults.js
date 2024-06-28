@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
 import { useDispatch, useSelector } from "react-redux";
 import { addCoins } from "../utils/chartSlice";
@@ -7,15 +7,17 @@ import { addSearchData } from "../utils/searchSlice";
 const ShowSearchResults = () => {
   // Retrieve search data from the Redux store
   const searchData = useSelector((store) => store.search.searchData);
-
+  const [coin, setCoin] = useState([]);
   // Access the Redux dispatch function
   const dispatch = useDispatch();
 
   // Function to handle the selection of a coin from search results
-  const handleCoinSelect = (coinId) => {
-    // console.log("coinID: ", coinId);
-    dispatch(addCoins(coinId));
-  };
+  const handleCoinSelect = (coinId) => setCoin([coinId]);
+  useEffect(() => {
+    if (coin.length > 0) {
+      dispatch(addCoins(coin));
+    }
+  }, [coin, dispatch]);
 
   // Function to handle refreshing the search results
   const handleRefresh = () => {

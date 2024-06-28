@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   ArrowTrendingUpIcon,
@@ -14,11 +14,17 @@ const SideBar = () => {
   const coinList = useSelector((store) => store.app.coinList);
   const currency = useSelector((store) => store.app.currency);
   const searchData = useSelector((store) => store.search.searchData);
+  const [coin, setCoin] = useState([]);
 
   // Function to handle coin selection
   const handleCoinSelect = (coinId) => {
-    dispatch(addCoins(coinId));
+    setCoin([coinId]);
   };
+  useEffect(() => {
+    if (coin.length > 0) {
+      dispatch(addCoins(coin));
+    }
+  }, [coin, dispatch]);
 
   // Render shimmer effect while data is loading
   if (!coinList || !Array.isArray(coinList)) return <SidebarShimmer />;

@@ -15,6 +15,7 @@ const chartSlice = createSlice({
     },
     addCoins: (state, action) => {
       state.coinId = action.payload;
+      // state.coinId = [action.payload];
     },
     removeCoin: (state, action) => {
       state.coinId = state.coinId.filter((id) => id !== action.payload);
