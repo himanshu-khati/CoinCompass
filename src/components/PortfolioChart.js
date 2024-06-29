@@ -4,17 +4,24 @@ import { Pie } from "react-chartjs-2";
 import millify from "millify";
 import { useSelector } from "react-redux";
 import PieShimmer from "./shimmerUI/PieShimmer";
+import ErrorModal from "./ErrorModal";
 
 const PortfolioChart = () => {
   // Custom hook to fetch portfolio data
-  usePortfolioData();
+  const { error, isLoading } = usePortfolioData();
 
   // Retrieve portfolio data from the Redux store
   const coinData = useSelector((store) => store.chart.portfolioData);
 
   // Display shimmer effect while data is loading
-  if (!coinData || !Array.isArray(coinData)) {
+  if (!coinData || isLoading) {
     return <PieShimmer />;
+  }
+
+  if (error) {
+    return (
+      <ErrorModal error={error} onClose={() => window.location.reload()} />
+    );
   }
 
   // Extract labels and dataset data from portfolio data

@@ -4,33 +4,34 @@ import { COIN_LIST_API } from "../../utils/constants";
 const useCoinList = (currency) => {
   const [coinList, setCoinList] = useState(null);
   const [error, setError] = useState(null);
-
-  const getCoinList = async () => {
-    try {
-      const response = await fetch(COIN_LIST_API(currency));
-
-      if (!response.ok) {
-        setError(response.status);
-        console.log(
-          `Error fetching coinlist data. Status: ${response.status}`
-        );
-        return;
-      }
-
-      const json = await response.json();
-      setError(null);
-      setCoinList(json);
-    } catch (error) {
-      setError("Network error");
-      console.log("Error fetching coinlist data: ", error);
-    }
-  };
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    const getCoinList = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(COIN_LIST_API(currency));
+        if (!response.ok) {
+          setError(response.statusText);
+          console.log(
+            `Error fetching coinlist data. Status: ${response.status}`
+          );
+          return;
+        }
+
+        const json = await response.json();
+        setCoinList(json);
+        setError(null);
+      } catch (error) {
+        setError("Network Error");
+      } finally {
+        setIsLoading(false);
+      }
+    };
     getCoinList();
   }, [currency]);
 
-  return {coinList, error};
+  return { coinList, error, isLoading };
 };
 
 export default useCoinList;

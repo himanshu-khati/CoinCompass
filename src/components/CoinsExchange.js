@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSellCoinRate, setBuyCoinRate } from "../utils/exchangeSlice";
 import useExchangeRates from "./hooks/useExchangeRates";
+import ErrorModal from "./ErrorModal"; 
+import ExchangeShimmer from "./shimmerUI/ExchangeShimmer";
 
 const CoinsExchange = () => {
   // Custom hook to fetch exchange rates data
-  useExchangeRates();
+  const { isLoading, error } = useExchangeRates();
 
   // Redux state and dispatch function
   const dispatch = useDispatch();
@@ -41,19 +43,25 @@ const CoinsExchange = () => {
     setNumberOfCoins(e.target.value);
   };
 
-  // Loading state
-  if (!exchangeData) return <p>Loading...</p>;
-
   // Calculate output value based on sell rate, buy rate, and amount
   const calculateOutput = (sellRate, buyRate, amount) => {
     let result = (1 / sellRate) * amount * buyRate;
     return Math.round(result * 1000) / 1000;
   };
 
+  // Render loading spinner while fetching data
+  if (isLoading || !exchangeData) {
+    return <ExchangeShimmer />;
+  }
+
   return (
     // Exchange coins container
     <div className="w-full lg:w-6/12 lg:mx-4 bg-white rounded-xl shadow my-2 lg:p-4 p-3">
       <h2 className="text-gray-800 text-lg font-semibold">Exchange Coins</h2>
+
+      {/* Render ErrorModal if error exists */}
+      <ErrorModal error={error} />
+
       <div className="flex flex-col gap-4 justify-center">
         {/* Sell section */}
         <div className="flex justify-between p-3 items-center">

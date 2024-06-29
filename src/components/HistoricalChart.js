@@ -5,6 +5,8 @@ import date from "date-and-time";
 import { Chart as ChartJS } from "chart.js/auto";
 import { Chart } from "react-chartjs-2";
 import { useSelector } from "react-redux";
+import ErrorModal from "./ErrorModal";
+import HistoricalChartShimmer from "./shimmerUI/HistoricalChartShimmer";
 
 const HistoricalChart = () => {
   // Fetch historical chart data using custom hook
@@ -22,10 +24,15 @@ const HistoricalChart = () => {
 
   // Display loading or error message
   if (isLoading || !historicalChartData) {
-    return <p>Loading...</p>;
+    return <HistoricalChartShimmer />;
   }
   if (error) {
-    return <p>Error: {error.message}</p>;
+    return (
+      <ErrorModal
+        error={error.message}
+        onClose={() => window.location.reload()}
+      />
+    );
   }
   const datasets = historicalChartData.map((data, index) => ({
     id: index,
@@ -37,10 +44,10 @@ const HistoricalChart = () => {
     pointBorderColor: "transparent",
     pointBorderWidth: 2,
     pointRadius: 1,
-    pointHoverRadius:1,
+    pointHoverRadius: 1,
     fill: false,
     tension: 0,
-    cubicInterpolationMode: 'monotone'
+    cubicInterpolationMode: "monotone",
   }));
 
   const labelData = historicalChartData[0].prices.map((price) => {
