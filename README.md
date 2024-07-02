@@ -1,4 +1,4 @@
-# Cryptocurrency Dashboard
+# Coin Compass
 
 ### Content
 
@@ -12,7 +12,7 @@
 
 ## 1. Introduction
 
-This project is a CoinCompass: Cryptocurrency Dashboard built using React, Redux Toolkit and TailwindCss. The dashboard allows users to view real-time price data for a selection of popular cryptocurrencies, and also provides a historical price chart for each coin. The data is sourced from the CoinGecko API, and the UI is built using Tailwind CSS.
+This project is a CoinCompass built using React, Redux Toolkit and TailwindCss. The dashboard allows users to view real-time price data for a selection of popular cryptocurrencies, and also provides a historical price chart for each coin. The data is sourced from the CoinGecko API, and the UI is built using Tailwind CSS.
 
 Hosted App : [CoinCompass](https://coincompass.web.app)
 
@@ -20,7 +20,7 @@ Hosted App : [CoinCompass](https://coincompass.web.app)
 
 ## 2. Features
 
-#### The Cryptocurrency Dashboard includes the following features.
+#### The Dashboard includes the following features.
 
 - Real-time price data for a selection of popular cryptocurrencies.
 
@@ -80,7 +80,7 @@ You can check out the live demo of the project [here](https://coincompass.web.ap
 - [Chart.js](https://www.chartjs.org/)
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 
-Thank you for checking out the CoinCompass Cryptocurrency Dashboard project! If you have any questions or feedback, feel free to reach out.
+Thank you for checking out the CoinCompass project! If you have any questions or feedback, feel free to reach out.
 
 ## 7. NOTE
 
